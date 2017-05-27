@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+      <title>Battleship</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <h1 style="color:#ffffff";>WELCOME TO BATTLESHIP!</h1>
+        <h2>Enter your guess for the coordinates of the computer's ship:</h2>
+        <form action="." method="POST">
+            <input type="number" name="n1" min="0" max="3" value ="x-coordinate">
+            <input type="number" name="n2" min="0" max="3" value ="y-coordinate">
+            <input type="submit" name="my-form" value="Submit">
+        </form>
+        <h4>please enter two values between 0 and 3</h4>
+        <h1>{{message}}</h1>
+        <h1>{{rowOne}}</h1>
+        <h1>{{rowTwo}}</h1>
+        <h1>{{rowThree}}</h1>
+        <h1>{{rowFour}}</h1>
+
+    </div> <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </body>
+<style type="text/css">
+    body {
+    background-color: #5D7B93
+    }
+
+    #container h1{
+        text-align: center;
+        text-color: #FFFFFF
+    }
+
+</style>
+</html>

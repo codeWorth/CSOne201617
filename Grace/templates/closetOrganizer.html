@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Closet Organizer</title>
+</head>
+<body>
+    <div id = "heading">
+        <h1> Welcome to Your Closet!</h1>
+    </div>
+    <form action="./grace" method="POST">
+        <div id = "weather">
+            <p> Choose one. Is it...</p>
+            <input type='radio' class='weather' name='weather' value='hot'>
+            <label for='hot'>Hot</label>
+            <input type='radio' class='weather' name='weather' value='warm' checked="checked">
+            <label for='warm'>Warm</label>
+            <input type='radio' class='weather' name='weather' value='chilly'>
+            <label for='chilly'>Chilly</label>
+            <input type='radio' class='weather' name='weather' value='cold'>
+            <label for='cold'>Cold</label>
+        </div>
+        <br>
+        <div id = "style">
+            <p> Choose one. Do you want...</p>
+            <input type='radio' class='style' name='style' value='casual' checked="checked">
+            <label for='casual'>Casual</label>
+            <input type='radio' class='style' name='style' value='fancy'>
+            <label for='fancy'>Fancy</label>
+            <input type='radio' class='style' name='style' value='sporty'>
+            <label for='sporty'>Sporty</label>
+            <input type='radio' class='style' name='style' value='sleepy'>
+            <label for='sleepy'>Sleepy</label>
+        </div>
+        <br>
+        <div id = "submit">
+            <input type="submit" name="my-form" value="Customize!">
+        </div>
+        </form>
+        <div id="message">
+            <h1>{{message}}</h1>
+        </div>
+</body>
+<style type="text/css">
+	body {
+		margin: 12px;
+		padding: 0px;
+		background-color: #CCE6FF;
+	}
+	#heading{
+		text-align: center;
+	}
+	#heading h1{
+		color: #000000;
+		font-size: 50px;
+		font-family: Joan;
+	}
+	#weather{
+		color: #000000;
+		text-align: center;
+		font-size: 20px;
+		font-family: Joan;
+	}
+	#style{
+		color: #000000;
+		text-align: center;
+		font-size: 20px;
+		font-family: Joan;
+	}
+	#color{
+		color: #000000;
+		text-align: center;
+		font-size: 20px;
+		font-family: Joan;
+	}
+	#submit{
+	    text-align: center;
+	}
+	#message{
+	    text-align:center;
+	}
+</style>
+</html>
+

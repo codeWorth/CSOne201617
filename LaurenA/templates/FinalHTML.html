@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"
+    <!-- The above meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+      <title>Calorific</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <form action="./laurena" method="POST">
+            <h1>Calorific</h1>
+            <h2>Select your sex:</h2>
+                <div class="radio">
+                    <label><input type="radio" name="gender" value="Female">Female</label>
+                    <label><input type="radio" name="gender" value="Male">Male</label>
+                </div>
+
+            <h2>Enter your height(inches):</h2>
+                <input type="number" name="height" min="36" max="120">
+            <h2>Enter your weight(lbs):</h2>
+                <input type="number" name="weight" min="50" max="1000">
+            <h2>Enter your age(years) :</h2>
+                <input type="number" name="age" min="1" max="110">
+            <h2>Enter how many calories you ate today :</h2>
+                <input type="number" name="ate" min="0" max="100000">
+
+            <input type="submit" name="my-form" value="submit">
+        </form>
+        <h2>{{feedback}}</h2>
+        <h2>{{tip}}</h2>
+    </div> <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </body>
+  <style type = "text/css">
+      header {
+        font-color:#FFFFFF;
+       }
+      body {
+        background-color:#CCE7FF;
+        font-family: "Georgia";
+        color:#0000C0;
+       }
+       #container h1 {
+            color: #C0C0C0
+       }
+  </style>
+</html>
