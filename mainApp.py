@@ -777,4 +777,4 @@ def processUserInputZannie():
 if __name__ == "__main__": # prevents code in this file from running if imported by another Python script
     # starts the development server for Flask and allows users to visit
     # this web application from the local machine by visiting localhost
-    app.run()
+    app.run(host='0.0.0.0', port=80)
