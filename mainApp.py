@@ -392,19 +392,19 @@ def sharpsPage():
     message6 = "Your piece of music is in the key of F sharp major! The key of F sharp major has " + sharpsQuantity + " sharps and its relative minor is D sharp minor."
     message7 = "Your piece of music is in the key of C sharp major! The key of C sharp major has " + sharpsQuantity + " sharps and its relative minor is A sharp minor."
     if sharpsQuantity == "1":
-        return render_template('responseScreen.html', message = message1)
+        return render_template('madeline/templates/responseScreen.html', message = message1)
     elif sharpsQuantity == "2":
-        return render_template('responseScreen.html', message = message2)
+        return render_template('madeline/templates/responseScreen.html', message = message2)
     elif sharpsQuantity == "3":
-        return render_template('responseScreen.html', message = message3)
+        return render_template('madeline/templates/responseScreen.html', message = message3)
     elif sharpsQuantity == "4":
-        return render_template('responseScreen.html', message = message4)
+        return render_template('madeline/templates/responseScreen.html', message = message4)
     elif sharpsQuantity == "5":
-        return render_template('responseScreen.html', message = message5)
+        return render_template('madeline/templates/responseScreen.html', message = message5)
     elif sharpsQuantity == "6":
-        return render_template('responseScreen.html', message = message6)
+        return render_template('madeline/templates/responseScreen.html', message = message6)
     elif sharpsQuantity == "7":
-        return render_template('responseScreen.html', message = message7)
+        return render_template('madeline/templates/responseScreen.html', message = message7)
         #message = "Your piece of music is in the key of G major! Key of G has " + sharpsQuantity + " sharps and it's relative minor is A minor."
        # return render_template('responseScreen.html', message=message)
 
@@ -419,19 +419,19 @@ def flatsPage():
     message6b = "Your piece of music is in the key of G flat major! The key of G flat major has " + flatsQuantity + " flats and its relative minor is E flat minor."
     message7b = "Your piece of music is in the key of C flat major! The key of C flat major has " + flatsQuantity + " flats and its relative minor is A flat minor."
     if flatsQuantity == "1":
-        return render_template('responseScreen.html', message = message1b)
+        return render_template('madeline/templates/responseScreen.html', message = message1b)
     elif flatsQuantity == "2":
-        return render_template('responseScreen.html', message = message2b)
+        return render_template('madeline/templates/responseScreen.html', message = message2b)
     elif flatsQuantity == "3":
-        return render_template('responseScreen.html', message = message3b)
+        return render_template('madeline/templates/responseScreen.html', message = message3b)
     elif flatsQuantity == "4":
-        return render_template('responseScreen.html', message = message4b)
+        return render_template('madeline/templates/responseScreen.html', message = message4b)
     elif flatsQuantity == "5":
-        return render_template('responseScreen.html', message = message5b)
+        return render_template('madeline/templates/responseScreen.html', message = message5b)
     elif flatsQuantity == "6":
-        return render_template('responseScreen.html', message = message6b)
+        return render_template('madeline/templates/responseScreen.html', message = message6b)
     elif flatsQuantity == "7":
-        return render_template('responseScreen.html', message = message7b)
+        return render_template('madeline/templates/responseScreen.html', message = message7b)
 
 
 
@@ -474,7 +474,7 @@ def processUserInputTest(numberofyears, job, skills, home, BFF, vehicle, magicnu
 @app.route("/nicole") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html', message="")
+        'nicole/templates/formEntry.html', message="")
 
 @app.route('/nicole', methods=['POST'])
 def processUserInput():
@@ -487,7 +487,7 @@ def processUserInput():
     magicnumber = int(request.form['quantity'])
     myMessage = processUserInputTest(numberofyears, job, skills, home, BFF, vehicle, magicnumber)
 
-    return render_template('formEntry.html',message=myMessage)
+    return render_template('nicole/templates/formEntry.html',message=myMessage)
 
 
 
@@ -496,7 +496,7 @@ def processUserInput():
 @app.route("/rashi") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html')
+        'shosho/templates/formEntry.html')
 
 class Movie(object):
     def __init__(self, title, url, percent, actors, summary):
@@ -533,7 +533,7 @@ def processUserInput():
     genre = request.form["radioOpt"]
     movie = getMovieInformation(genre)
     return render_template(
-        'movieInformationTemplate.html',title = movie.title, percent = movie.percent, url = movie.url, actors = movie.actors, summary = movie.summary)
+        'shosho/templates/movieInformationTemplate.html',title = movie.title, percent = movie.percent, url = movie.url, actors = movie.actors, summary = movie.summary)
 
 
 
@@ -596,7 +596,7 @@ At the core of feminist sociology is the idea of the systematic oppression of wo
 def landingPage():
     questionList = readCSV("FeminismQuiz/Sheet 1-Table 1.csv")
     return render_template(
-        'formEntry.html', message="",questionList=questionList)
+        'shosho/templates/formEntry.html', message="",questionList=questionList)
 
 def processInputChoice(questionList, responseList):
     personality_type_dict={'r':'Radical','c':"Cultural",'s':"Socialist",'i':"Intersectionalist"}
@@ -638,7 +638,7 @@ def processUserInput():
         print personalityTypeResponseList[0]
 
         return render_template(
-            'responseScreen.html',message="You are a " + personalityTypeResponseList[0] + " feminist. Check out the nifty description below to learn:  ", msg_desc=msg_desc[personalityTypeResponseList[0]])
+            'shosho/templates/responseScreen.html',message="You are a " + personalityTypeResponseList[0] + " feminist. Check out the nifty description below to learn:  ", msg_desc=msg_desc[personalityTypeResponseList[0]])
 
     if len(personalityTypeResponseList) > 1:
         pTypeMsg = ""
@@ -657,7 +657,7 @@ def processUserInput():
         questionList = readDoubleResponseCSV("FeminismQuiz/Sheet 2-Table 1.csv","".join(sorted(pTypeMsgCode)))
 
         return render_template(
-            'formEntryDouble.html', message=pTypeMsg, question=questionList[0])
+            'shosho/templates/formEntryDouble.html', message=pTypeMsg, question=questionList[0])
 
 
 @app.route('/shosho/submitDouble', methods=['POST'])
@@ -676,7 +676,7 @@ def processUserInputDouble():
 
 
     return render_template(
-            'responseScreen.html',message="You are " + personality_type_dict[q_type] + " !!", msg_desc=msg_desc[personality_type_dict[q_type]])
+            'shosho/templates/responseScreen.html',message="You are " + personality_type_dict[q_type] + " !!", msg_desc=msg_desc[personality_type_dict[q_type]])
 
 
 
@@ -685,7 +685,7 @@ def processUserInputDouble():
 @app.route("/sophia") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html')
+        'shosho/templates/formEntry.html')
 
 @app.route('/sophia', methods=['POST'])
 def processUserInput():
@@ -693,25 +693,25 @@ def processUserInput():
     meal = request.form['myDropDown']
     if meal == "Entree":
         if food == "choice1":
-            return render_template("tuna.html")
+            return render_template("shosho/templates/tuna.html")
         elif food == "choice2":
-            return render_template("bruschetta.html")
+            return render_template("shosho/templates/bruschetta.html")
         elif food == "choice3":
-            return render_template("lemonChicken.html")
+            return render_template("shosho/templates/lemonChicken.html")
     elif meal == "Appetizer":
         if food == "choice1":
-            return render_template("spicedOlives.html")
+            return render_template("shosho/templates/spicedOlives.html")
         elif food == "choice2":
-            return render_template("stuffedPeppers.html")
+            return render_template("shosho/templates/stuffedPeppers.html")
         elif food == "choice3":
-            return render_template("spicedPitaChips.html")
+            return render_template("shosho/templates/spicedPitaChips.html")
     elif meal == "Dessert":
         if food == "choice1":
-            return render_template("brownies.html")
+            return render_template("shosho/templates/brownies.html")
         elif food == "choice2":
-            return render_template("pumpkinMuffins.html")
+            return render_template("shosho/templates/pumpkinMuffins.html")
         elif food == "choice3":
-            return render_template("lemonBars.html")
+            return render_template("shosho/templates/lemonBars.html")
 
 
 
@@ -761,7 +761,7 @@ def battleship(userXGuess, userYGuess):
 @app.route("/zannie") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html', message="")
+        'zannie/templates/formEntry.html', message="")
 
 @app.route('/zannie', methods=['POST'])
 def processUserInput():
@@ -774,7 +774,7 @@ def processUserInput():
     myRowThree = listOfStrings[2]
     myRowFour = listOfStrings[3]
     return render_template(
-        'formEntry.html',message=result[0], rowOne=myRowOne, rowTwo=myRowTwo, rowThree=myRowThree, rowFour=myRowFour)
+        'zannie/templates/formEntry.html',message=result[0], rowOne=myRowOne, rowTwo=myRowTwo, rowThree=myRowThree, rowFour=myRowFour)
 
 
 
