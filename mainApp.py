@@ -29,7 +29,7 @@ quoteList = ["https://www.brainyquote.com/quotes/topics/topic_funny.html", "http
 @app.route("/talia") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html', message="")
+        'talia/templates/formEntry.html', message="")
 
 @app.route('/talia', methods=['POST'])
 def processUserInput():
@@ -39,7 +39,7 @@ def processUserInput():
     cuisineList = meals[meal][cuisine] # list of possible dishes
     mealDescription = cuisineList[int(request.form['radioCost'])] # low (0), medium (1), or expensive (2) item
     myMessage = "You should get" + " " + " " + mealDescription[0] + "!"
-    return render_template('formEntry.html',message=myMessage, image= mealDescription[1] ) # use mealDescription[1] for image
+    return render_template('talia/templates/formEntry.html',message=myMessage, image= mealDescription[1] ) # use mealDescription[1] for image
 
 
 
@@ -47,7 +47,7 @@ def processUserInput():
 @app.route("/amina") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html', message="")
+        'amina/templates/formEntry.html', message="")
 
 
 @app.route('/amina', methods=['POST'])
@@ -115,7 +115,7 @@ def processUserInput():
     output = switcher(cpf)
 
     return render_template(
-        'grocery.html', c=output["carbs"],p=output["protein"],f=output["fat"], g=output["groceries"])
+        'amina/templates/grocery.html', c=output["carbs"],p=output["protein"],f=output["fat"], g=output["groceries"])
 
 
 
@@ -123,7 +123,7 @@ def processUserInput():
 @app.route("/grace")
 def landingPage():
     return render_template(
-        'closetOrganizer.html', message="")
+        'grace/templates/closetOrganizer.html', message="")
 
 @app.route('/grace', methods=['POST'])
 def processUserInput():
@@ -131,7 +131,7 @@ def processUserInput():
     style = request.form['style']
     message = personalStylist(weather, style)
     return render_template(
-        'closetOrganizer.html', message=message)
+        'grace/templates/closetOrganizer.html', message=message)
 
 class ClosetItem(object):
     def __init__(self, name, weather, style, isTop):
@@ -218,7 +218,7 @@ def personalStylist(weatherChoice, styleChoice):
 @app.route("/jordan") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html', message="")
+        'jordan/templates/formEntry.html', message="")
 
 @app.route('/jordan', methods=['POST'])
 def processUserInput():
@@ -239,7 +239,7 @@ def processUserInput():
 
 
     return render_template(
-        'formEntry.html',message=myMessage)
+        'jordan/templates/formEntry.html',message=myMessage)
 
 
 
@@ -247,7 +247,7 @@ def processUserInput():
 @app.route("/kate")
 def landingPage():
     return render_template(
-        'formEntry.html', message="")
+        'kate/templates/formEntry.html', message="")
 
 @app.route("/kate", methods=['POST']) #formEntry.html
 def changePage():
@@ -257,7 +257,7 @@ def changePage():
                 "responseScreen.html")
         elif request.form["answer"] == "no":
             return render_template(
-                "no.html")
+                "kate/templates/no.html")
 
 
 @app.route('/kate/responseScreen', methods=['POST'])
@@ -294,7 +294,7 @@ def pickLink(category):
 @app.route("/laurena") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'FinalHTML.html', feedback="", tip="")
+        'laurena/templates/FinalHTML.html', feedback="", tip="")
 
 @app.route('/laurena', methods=['POST'])
 def processUserInput():
@@ -322,7 +322,7 @@ def processUserInput():
         tip="I recommend a workout and drinking more water. Also next time you get hungry try watermelon, it is both delicious and healthy"
 
 
-    return render_template('FinalHTML.html',feedback=x,tip=tip)
+    return render_template('laurena/templates/FinalHTML.html',feedback=x,tip=tip)
 
 
 
@@ -334,7 +334,7 @@ def to_words(text):
 @app.route("/laurent") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html', message="")
+        'laurent/templates/formEntry.html', message="")
 
 @app.route('/laurent', methods=['POST'])
 
@@ -354,7 +354,7 @@ def processUserInput():
     total = n1 + n2
     myMessage = " " + str(total)
     return render_template(
-        'responseScreen.html',message=myMessage)
+        'laurent/templates/responseScreen.html',message=myMessage)
 
 
 
@@ -362,7 +362,7 @@ def processUserInput():
 @app.route("/madeline") # makes landingPage() execute when you navigate to root directory of local host
 def landingPage():
     return render_template(
-        'formEntry.html', message="")
+        'madeline/templates/formEntry.html', message="")
 
 @app.route('/madeline/formEntry', methods=['POST'])
 def processUserInput():
@@ -370,16 +370,16 @@ def processUserInput():
 
     if reaction == "sharps":
         return render_template(
-            'sharpsResponse.html')
+            'madeline/templates/sharpsResponse.html')
     elif reaction == "flats":
         return render_template(
-            'flatsResponse.html')
+            'madeline/templates/flatsResponse.html')
     elif reaction == "none":
         return render_template(
-            'noneResponse.html')
+            'madeline/templates/noneResponse.html')
     elif reaction == "unsure":
         return render_template(
-            "unsureResponse.html")
+            "madeline/templates/unsureResponse.html")
 
 @app.route("/madeline/sharpsResponse", methods=['POST']) # makes landingPage() execute when you navigate to root directory of local host
 def sharpsPage():
@@ -406,7 +406,7 @@ def sharpsPage():
     elif sharpsQuantity == "7":
         return render_template('madeline/templates/responseScreen.html', message = message7)
         #message = "Your piece of music is in the key of G major! Key of G has " + sharpsQuantity + " sharps and it's relative minor is A minor."
-       # return render_template('responseScreen.html', message=message)
+       # return render_template('madeline/templates/responseScreen.html', message=message)
 
 @app.route("/madeline/flatsResponse", methods=['POST']) # makes landingPage() execute when you navigate to root directory of local host
 def flatsPage():
