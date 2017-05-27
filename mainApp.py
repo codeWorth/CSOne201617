@@ -5,34 +5,18 @@ import csv
 
 app = Flask(__name__) # creates Flask object with the __name__ attribute (which is __main__)
 
-
-
-
-
-#Kate's Globals
-jokeList = ["http://www.laughfactory.com/jokes/clean-jokes ", "http://www.laughfactory.com/jokes/joke-of-the-day", "http://www.laughfactory.com/jokes/latest-jokes", "https://www.buzzfeed.com/jessicamisener/21-jokes-so-stupid-theyre-actually-funny?utm_term=.rvJwzplyw#.sfEXnvx1X",  "http://www.ducksters.com/jokes/knockknock.php"]
-videoList = ["https://www.youtube.com/watch?v=XyNlqQId-nk","https://www.youtube.com/watch?v=x3eIKSXXncc", "https://www.youtube.com/watch?v=OSgYQl6GZbU","https://www.youtube.com/watch?v=qL0QROnL-JU","https://www.youtube.com/watch?v=btpA9ywjrUE", "https://www.youtube.com/watch?v=2dhl2M6D4bA"]
-riddleList = ["http://www.funology.com/riddles/", "http://www.doriddles.com/Riddles/Hard", "https://www.riddles.com/difficult-riddles", "http://www.playbuzz.com/nickps12/hard-riddles", "http://www.lolwot.com/12-incredibly-difficult-riddles-that-will-drive-you-crazy/"]
-songList = ["https://www.youtube.com/watch?v=4m48GqaOz90&list=RDQMjb2m2x1rKpU", "https://www.youtube.com/watch?v=fRh_vgS2dFE&list=RDEMxY4vTJ4nihfJFUtQgu2pAA ", "https://www.youtube.com/watch?v=CevxZvSJLk8&list=RDEM9E_ik5ScxhRL1c_HWNxA2A", "https://www.youtube.com/watch?v=e-ORhEE9VVg&list=RDEMb1vAi4rwXXeDlr7NZ68C_w", "https://www.youtube.com/watch?v=PMivT7MJ41M&list=PL55713C70BA91BD6E"]
-gameList = ["https://www.coolmath-games.com/0-run", "https://www.coolmath-games.com/0-frizzle-fraz", "http://www.coolmath-games.com/0-papas-pizzeria", "https://www.miniclip.com/games/bubble-trouble/en/", "http://slither.io"]
-exerciseList = ["https://www.youtube.com/watch?v=oBu-pQG6sTY", "https://www.youtube.com/watch?v=r8cexmYOknI", "https://www.youtube.com/watch?v=Lu1qJrjxzME", "https://www.youtube.com/watch?v=HRkNfdlm5Qs", "https://www.youtube.com/watch?v=qWy_aOlB45Y"]
-factList = ["https://www.thefactsite.com/2011/07/top-100-random-funny-facts.html", "http://www.livin3.com/50-cool-and-weird-fun-facts-that-you-should-know#did%20you%20know", "http://kids.nationalgeographic.com/explore/adventure_pass/weird-but-true/", "http://www.short-funny.com/fun-facts.php", "http://www.short-funny.com/hilarious-jokes.php"]
-quoteList = ["https://www.brainyquote.com/quotes/topics/topic_funny.html", "https://www.pinterest.com/explore/funny-quotes/", "http://www.coolfunnyquotes.com", "http://www.rd.com/jokes/funny-quotes/", "https://www.brainyquote.com/quotes/topics/topic_inspirational.html"]
-#endif
-
-
-
-
-
+@app.route("/")
+def landingPageAll():
+    return render_template("index.html")
 
 #Talia
 @app.route("/talia") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageTalia():
     return render_template(
         'talia/templates/formEntry.html', message="")
 
 @app.route('/talia', methods=['POST'])
-def processUserInput():
+def processUserInputTalia():
     meals = {"breakfast": {"Mexican": [["Pan Dulces", "http://farm3.static.flickr.com/2386/2169577152_a9e68e3260.jpg?w=240"], ["Beans and Rice", "http://assets.bonappetit.com/photos/57b14d181b33404414976777/16:9/w_1000,c_limit/mare_red_beans_and_rice_h.jpg"], ["Huevos Rancheros", "https://d3cizcpymoenau.cloudfront.net/images/21443/SFS_Huevos_Rancheros-12.jpg"]], "Italian": [["Caffe Latte", "http://www.attibassicafe.com/wp-content/uploads/2013/02/web10.jpg"],["Cornetto Pastry", "https://cdn0.vox-cdn.com/thumbor/n7FtkOBm6-9IjvgZvXOw2vO41SE=/82x0:972x668/1200x800/filters:focal(82x0:972x668)/cdn0.vox-cdn.com/uploads/chorus_image/image/48842719/pastry-cornetti-dina.0.0.jpg"], ["Caffe Latte and a pastry", "https://s3-media4.fl.yelpcdn.com/bphoto/KTuvYbucUPC7GIwS3zNFBg/o.jpg"]], "American": [["Bagel and Cream Cheese", "http://s.eatthis-cdn.com/media/images/ext/792825960/bagel-cream-cheese.jpg"], ["Breakfast Sandwich", "http://assets.bonappetit.com/photos/57acec251b3340441497533d/16:9/w_1000,c_limit/ba-best-breakfast-sandwich.jpg"], ["Full Breakfast", "http://www.teladoiofirenze.it/wp-content/uploads/2013/10/breakfast.jpg"]], "French": [["Croissant", "https://d1alt1wkdk73qo.cloudfront.net/images/guide/89b54c4bea6e4309b4f3fa7f8b192b41/640x478_ac.jpg"], ["Nutella Crepe", "http://www.mezzokilo.it/UserFiles/Image/ricette/big/crepes-nutella-2.jpg"],["Crock Madam", "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/2/17/0/GE0305_Croque-Madam-Sandwich_s4x3.jpg.rend.hgtvcom.616.462.jpeg"]]},"lunch": {"Mexican": [["Nachos", "http://www.taylormademarket.com/wp-content/uploads/2013/08/pizza-nachos.jpg"], ["Tacos", "https://static1.squarespace.com/static/536938f0e4b00eb7103b2ce7/53693948e4b0cccc5fa9ab07/547f6a0de4b0a782f71d5496/1417636365794/uno_dos_tacos_carne_asada.jpg"], ["Steak Burrito Bowl", "http://www.culinaryenvy.com/wp-content/uploads/2016/01/burrito-bowl-overhd-1024sq.jpg"]],"Italian": [["Margherita Pizza", "http://www.saveur.com/sites/saveur.com/files/styles/large_1x_/public/images/2015/11/pizza-margherita_2000x1500_toddcoleman.jpg?itok=EST9oig4"], ["Stromboli", "http://www.simplyscratch.com/wp-content/uploads/2014/06/Homemade-Stromboli-l-www.SimplyScratch.com-recipe.jpg"], ["Pasta Carbonara", "http://assets.simplyrecipes.com/wp-content/uploads/2012/02/pasta-carbonara-horiz-a-1200.jpg"]], "American": [["Panini Sandwich", "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2010/8/30/1/FNM_100110-Insert-010_s4x3.jpg.rend.hgtvcom.1280.960.jpeg"], ["Burger and Fries", "http://www.signatureofsoloncc.com/sites/www.signatureofsoloncc.com/files/predefined-images/burger-fries%20%281%29.jpg"],["Nicoise Salad", "http://cdn2.tmbi.com/TOH/Images/Photos/37/1200x1200/Veggie-Nicoise-Salad_exps133577_TH2379797B11_15_7bC_RMS.jpg"]], "French": [["French Onion Soup", "http://www.seriouseats.com/recipes/assets_c/2015/01/20150116-french-onion-soup-vicky-wasik-20-thumb-1500xauto-418068.jpg"],["Escargots Bourguignon", "http://www.saveur.com/sites/saveur.com/files/styles/large_1x_/public/import/2014/images/2010-10/7-SAV1110_bistro_escargots_P.jpg.jpg?itok=-XRFYrn0"],["Blanquette de Veau", "http://sf2.viepratique.fr/wp-content/uploads/sites/2/2013/11/blanquette-de-veau-e1457428254753.jpg"]]},"dinner": {"Mexican": [["Enchiladas", "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/10/1/0/WU0308H_simple-perfect-enchiladas_s4x3.jpg.rend.hgtvcom.616.462.jpeg"],["Stuffed Peppers", "http://www.skinnytaste.com/wp-content/uploads/2008/11/turkey-stuffed-peppers-4.jpg"],["Chicken Chimichangas", "http://www.thewickednoodle.com/wp-content/uploads/2014/01/chimis.jpg"]],"Italian": [["Mushroom Risotto","http://www.recipetineats.com/wp-content/uploads/2016/08/Chicken-Mushroom-Risotto_2-680x486.jpg"],["Tagliatelle Ragu", "http://static.economic.bg/news/7/63161/4802.jpg"],["Italian Pork Stew and Polenta" ,"http://www.italianfoodforever.com/wp-content/uploads/2013/10/porkstew1.jpg"]], "American": [["Roasted Chicken and Salad", "http://cdn-image.myrecipes.com/sites/default/files/image/recipes/su/10/06/chicken-arugula-su-x.jpg"],["Steak and Fries","http://www.lovethispic.com/uploaded_images/40617-Steak-And-Fries.png"],["Surf and Turf", "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2010/12/28/4/FNM_010111-WEDinners-007_s4x3.jpg.rend.hgtvcom.616.462.jpeg"]], "French":[["Duck A L'orange", "http://cdn-image.foodandwine.com/sites/default/files/styles/551x551/public/recipe1015-hd-spiced-duck-a-l-orange_0.jpg?itok=wJi2N24z"],["Beef Bourguignon", "http://cf.therecipecritic.com/wp-content/uploads/2016/11/beefstew4-650x975.jpg"],["Mussels", "http://assets.simplyrecipes.com/wp-content/uploads/2012/03/mussels-white-wine-sauce-horiz-a-1200.jpg"]]}}
     meal = request.form['radioMeal'] # breakfast, lunch, or dinner
     cuisine = request.form['radioCuisine'] # American, Mexican, etc.
@@ -45,13 +29,13 @@ def processUserInput():
 
 #Amina
 @app.route("/amina") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageAmina():
     return render_template(
         'amina/templates/formEntry.html', message="")
 
 
 @app.route('/amina', methods=['POST'])
-def processUserInput():
+def processUserInputAmina():
     carbs = int(request.form['carbs'])
     protein = int(request.form['protein'])
     fat = int(request.form['fat'])
@@ -121,12 +105,12 @@ def processUserInput():
 
 #grace
 @app.route("/grace")
-def landingPage():
+def landingPageGrace():
     return render_template(
         'grace/templates/closetOrganizer.html', message="")
 
 @app.route('/grace', methods=['POST'])
-def processUserInput():
+def processUserInputGrace():
     weather = request.form['weather']
     style = request.form['style']
     message = personalStylist(weather, style)
@@ -216,12 +200,12 @@ def personalStylist(weatherChoice, styleChoice):
 
 #jordan
 @app.route("/jordan") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageJordan():
     return render_template(
         'jordan/templates/formEntry.html', message="")
 
 @app.route('/jordan', methods=['POST'])
-def processUserInput():
+def processUserInputJordan():
     exercises = {"CARDIO": {"one":["treadmill", "jumping jacks"], "full":["treadmill and high knees", "jumping jacks and high knees"]}, "ABS": {"one":["crunches", "two arm plank"], "full":["bosu crunches and jump lunges", "two arm planks and "]}, "STRENGTH": {"one":["treadmill", "jumping jacks"], "full":["treadmill", "jumping jacks"]}}
     submitButton = request.form["my-form"]
     if submitButton == "GIVE ME MY WORKOUT!":
@@ -244,8 +228,20 @@ def processUserInput():
 
 
 #kate
+
+#Kate's Globals
+jokeList = ["http://www.laughfactory.com/jokes/clean-jokes ", "http://www.laughfactory.com/jokes/joke-of-the-day", "http://www.laughfactory.com/jokes/latest-jokes", "https://www.buzzfeed.com/jessicamisener/21-jokes-so-stupid-theyre-actually-funny?utm_term=.rvJwzplyw#.sfEXnvx1X",  "http://www.ducksters.com/jokes/knockknock.php"]
+videoList = ["https://www.youtube.com/watch?v=XyNlqQId-nk","https://www.youtube.com/watch?v=x3eIKSXXncc", "https://www.youtube.com/watch?v=OSgYQl6GZbU","https://www.youtube.com/watch?v=qL0QROnL-JU","https://www.youtube.com/watch?v=btpA9ywjrUE", "https://www.youtube.com/watch?v=2dhl2M6D4bA"]
+riddleList = ["http://www.funology.com/riddles/", "http://www.doriddles.com/Riddles/Hard", "https://www.riddles.com/difficult-riddles", "http://www.playbuzz.com/nickps12/hard-riddles", "http://www.lolwot.com/12-incredibly-difficult-riddles-that-will-drive-you-crazy/"]
+songList = ["https://www.youtube.com/watch?v=4m48GqaOz90&list=RDQMjb2m2x1rKpU", "https://www.youtube.com/watch?v=fRh_vgS2dFE&list=RDEMxY4vTJ4nihfJFUtQgu2pAA ", "https://www.youtube.com/watch?v=CevxZvSJLk8&list=RDEM9E_ik5ScxhRL1c_HWNxA2A", "https://www.youtube.com/watch?v=e-ORhEE9VVg&list=RDEMb1vAi4rwXXeDlr7NZ68C_w", "https://www.youtube.com/watch?v=PMivT7MJ41M&list=PL55713C70BA91BD6E"]
+gameList = ["https://www.coolmath-games.com/0-run", "https://www.coolmath-games.com/0-frizzle-fraz", "http://www.coolmath-games.com/0-papas-pizzeria", "https://www.miniclip.com/games/bubble-trouble/en/", "http://slither.io"]
+exerciseList = ["https://www.youtube.com/watch?v=oBu-pQG6sTY", "https://www.youtube.com/watch?v=r8cexmYOknI", "https://www.youtube.com/watch?v=Lu1qJrjxzME", "https://www.youtube.com/watch?v=HRkNfdlm5Qs", "https://www.youtube.com/watch?v=qWy_aOlB45Y"]
+factList = ["https://www.thefactsite.com/2011/07/top-100-random-funny-facts.html", "http://www.livin3.com/50-cool-and-weird-fun-facts-that-you-should-know#did%20you%20know", "http://kids.nationalgeographic.com/explore/adventure_pass/weird-but-true/", "http://www.short-funny.com/fun-facts.php", "http://www.short-funny.com/hilarious-jokes.php"]
+quoteList = ["https://www.brainyquote.com/quotes/topics/topic_funny.html", "https://www.pinterest.com/explore/funny-quotes/", "http://www.coolfunnyquotes.com", "http://www.rd.com/jokes/funny-quotes/", "https://www.brainyquote.com/quotes/topics/topic_inspirational.html"]
+#endif
+
 @app.route("/kate")
-def landingPage():
+def landingPageKate():
     return render_template(
         'kate/templates/formEntry.html', message="")
 
@@ -254,14 +250,14 @@ def changePage():
     if request.method == 'POST':
         if request.form["answer"] == "yes":
             return render_template(
-                "responseScreen.html")
+                "kate/templates/responseScreen.html")
         elif request.form["answer"] == "no":
             return render_template(
                 "kate/templates/no.html")
 
 
 @app.route('/kate/responseScreen', methods=['POST'])
-def processUserInput():
+def processUserInputKate():
     if request.method == 'POST':
         category = request.form['buttonChoices']
         URL= pickLink(category)
@@ -269,6 +265,7 @@ def processUserInput():
 
 
 def pickLink(category):
+    global jokeList
     if category == "joke":
         return jokeList[random.randint(0,len(jokeList)-1)]
     elif category == "video":
@@ -286,18 +283,18 @@ def pickLink(category):
     elif category == "quote":
         return quoteList[random.randint(0,len(quoteList)-1)]
     else:
-        return "error"
+        return "www.google.com"
 
 
 
 #LaurenA
 @app.route("/laurena") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageLaurenA():
     return render_template(
         'laurena/templates/FinalHTML.html', feedback="", tip="")
 
 @app.route('/laurena', methods=['POST'])
-def processUserInput():
+def processUserInputLaurenA():
     gender = request.form['gender']
     height = int(request.form['height'])
     weight = int(request.form['weight'])
@@ -332,14 +329,12 @@ def to_words(text):
     return re.findall(r'\w+', text)
 
 @app.route("/laurent") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageLaurenT():
     return render_template(
         'laurent/templates/formEntry.html', message="")
 
 @app.route('/laurent', methods=['POST'])
-
-
-def processUserInput():
+def processUserInputLaurenT():
     n1 = str(request.form['n1'])
     n2 = str(request.form['n2'])
     addA = ""
@@ -360,12 +355,12 @@ def processUserInput():
 
 #Madeline
 @app.route("/madeline") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageMadeline():
     return render_template(
         'madeline/templates/formEntry.html', message="")
 
 @app.route('/madeline/formEntry', methods=['POST'])
-def processUserInput():
+def processUserInputMadeline():
     reaction = request.form['radioKey']
 
     if reaction == "sharps":
@@ -472,12 +467,12 @@ def processUserInputTest(numberofyears, job, skills, home, BFF, vehicle, magicnu
 
 
 @app.route("/nicole") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageNicole():
     return render_template(
         'nicole/templates/formEntry.html', message="")
 
 @app.route('/nicole', methods=['POST'])
-def processUserInput():
+def processUserInputNicole():
     numberofyears = [int(request.form['y0'])] #, int(request.form['y1']), int(request.form['y2']), int(request.form['y3'])]
     job = [request.form['j0']] #, request.form['j1'], request.form['j2'], request.form['j3']]
     skills = [request.form['s0']] #, request.form['s1'], request.form['s2'], request.form['s3']]
@@ -494,9 +489,9 @@ def processUserInput():
 
 #Rashi
 @app.route("/rashi") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageRashi():
     return render_template(
-        'shosho/templates/formEntry.html')
+        'rashi/templates/formEntry.html')
 
 class Movie(object):
     def __init__(self, title, url, percent, actors, summary):
@@ -529,11 +524,11 @@ def getMovieInformation(genre):
         return d5
 
 @app.route('/rashi', methods=['POST'])
-def processUserInput():
+def processUserInputRashi():
     genre = request.form["radioOpt"]
     movie = getMovieInformation(genre)
     return render_template(
-        'shosho/templates/movieInformationTemplate.html',title = movie.title, percent = movie.percent, url = movie.url, actors = movie.actors, summary = movie.summary)
+        'rashi/templates/movieInformationTemplate.html',title = movie.title, percent = movie.percent, url = movie.url, actors = movie.actors, summary = movie.summary)
 
 
 
@@ -593,8 +588,8 @@ At the core of feminist sociology is the idea of the systematic oppression of wo
 }
 
 @app.route("/shosho") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
-    questionList = readCSV("FeminismQuiz/Sheet 1-Table 1.csv")
+def landingPageShoSho():
+    questionList = readCSV("templates/shosho/FeminismQuiz/Sheet 1-Table 1.csv")
     return render_template(
         'shosho/templates/formEntry.html', message="",questionList=questionList)
 
@@ -620,9 +615,9 @@ def processInputChoice(questionList, responseList):
     return personalityTypeResponseList
 
 @app.route('/shosho/submit', methods=['POST'])
-def processUserInput():
+def processUserInputShoSho():
 
-    questionList = readCSV("FeminismQuiz/Sheet 1-Table 1.csv")
+    questionList = readCSV("templates/shosho/FeminismQuiz/Sheet 1-Table 1.csv")
 
     personality_type_dict={'r':'Radical','c':"Cultural",'s':"Socialist",'i':"Intersectionalist"}
 
@@ -654,7 +649,7 @@ def processUserInput():
             cnt += 1
         personalityTypeResponseList.sort()
 
-        questionList = readDoubleResponseCSV("FeminismQuiz/Sheet 2-Table 1.csv","".join(sorted(pTypeMsgCode)))
+        questionList = readDoubleResponseCSV("templates/shosho/FeminismQuiz/Sheet 2-Table 1.csv","".join(sorted(pTypeMsgCode)))
 
         return render_template(
             'shosho/templates/formEntryDouble.html', message=pTypeMsg, question=questionList[0])
@@ -662,7 +657,7 @@ def processUserInput():
 
 @app.route('/shosho/submitDouble', methods=['POST'])
 def processUserInputDouble():
-    questionList = readDoubleResponseCSV("FeminismQuiz/Sheet 2-Table 1.csv", "")
+    questionList = readDoubleResponseCSV("templates/shosho/FeminismQuiz/Sheet 2-Table 1.csv", "")
     q = request.form['q1']
     q_value = request.form['group0']
     res_dic = {'r':0,'c':0,'s':0,'i':0,}
@@ -683,35 +678,35 @@ def processUserInputDouble():
 
 #Sophia
 @app.route("/sophia") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageSophia():
     return render_template(
-        'shosho/templates/formEntry.html')
+        'sophia/templates/formEntry.html')
 
 @app.route('/sophia', methods=['POST'])
-def processUserInput():
+def processUserInputSophia():
     food = request.form['food']
     meal = request.form['myDropDown']
     if meal == "Entree":
         if food == "choice1":
-            return render_template("shosho/templates/tuna.html")
+            return render_template("sophia/templates/tuna.html")
         elif food == "choice2":
-            return render_template("shosho/templates/bruschetta.html")
+            return render_template("sophia/templates/bruschetta.html")
         elif food == "choice3":
-            return render_template("shosho/templates/lemonChicken.html")
+            return render_template("sophia/templates/lemonChicken.html")
     elif meal == "Appetizer":
         if food == "choice1":
-            return render_template("shosho/templates/spicedOlives.html")
+            return render_template("sophia/templates/spicedOlives.html")
         elif food == "choice2":
-            return render_template("shosho/templates/stuffedPeppers.html")
+            return render_template("sophia/templates/stuffedPeppers.html")
         elif food == "choice3":
-            return render_template("shosho/templates/spicedPitaChips.html")
+            return render_template("sophia/templates/spicedPitaChips.html")
     elif meal == "Dessert":
         if food == "choice1":
-            return render_template("shosho/templates/brownies.html")
+            return render_template("sophia/templates/brownies.html")
         elif food == "choice2":
-            return render_template("shosho/templates/pumpkinMuffins.html")
+            return render_template("sophia/templates/pumpkinMuffins.html")
         elif food == "choice3":
-            return render_template("shosho/templates/lemonBars.html")
+            return render_template("sophia/templates/lemonBars.html")
 
 
 
@@ -759,12 +754,12 @@ def battleship(userXGuess, userYGuess):
 
 
 @app.route("/zannie") # makes landingPage() execute when you navigate to root directory of local host
-def landingPage():
+def landingPageZannie():
     return render_template(
         'zannie/templates/formEntry.html', message="")
 
 @app.route('/zannie', methods=['POST'])
-def processUserInput():
+def processUserInputZannie():
     userXGuess = int(request.form['n1'])
     userYGuess = int(request.form['n2'])
     result = battleship(userXGuess, userYGuess)
